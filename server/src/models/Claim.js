@@ -19,11 +19,15 @@ const claimSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    amount: Number,
+    amount: {
+      type: Number,
+      required: true,
+    },
     status: {
       type: String,
       enum: ["APPROVED", "SUBMITTED", "REJECTED"],
       default: "SUBMITTED",
+      required: true,
     },
   },
   { timestamps: true },
