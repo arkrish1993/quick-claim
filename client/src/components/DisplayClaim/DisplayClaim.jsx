@@ -1,4 +1,5 @@
-import { StatusColor } from "../common/constants";
+import { StatusColor } from "../../common/constants";
+import "./DisplayClaim.css";
 
 const DisplayClaim = ({ claim, error }) => {
   if (error) return;
@@ -33,30 +34,6 @@ const DisplayClaim = ({ claim, error }) => {
           </div>
         </div>
       </div>
-
-      {/* Inline CSS in same file */}
-      <style>{`
-        .claim-grid-wrapper {
-          display: flex;
-          justify-content: center;
-        }
-
-        .claim-grid {
-          display: grid;
-          grid-template-columns: 180px 20px 200px;
-          row-gap: 14px;
-          align-items: center;
-          text-align: right;
-          font-weight: 600;
-        }
-        
-        .claim-value {
-          text-align: left;
-          width: fit-content; 
-          margin-left: 10px;
-        }
-        
-      `}</style>
     </div>
   );
 };
