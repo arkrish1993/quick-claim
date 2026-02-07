@@ -3,7 +3,6 @@ import api from "../api/api";
 import isAlphaNumeric from "../utils/isAlphaNumeric";
 import { ErrorMessage, KeyDownCode, ResponseCode } from "../common/constants";
 
-// convert to form
 function CheckClaimStatus({ setClaim, setBannerError }) {
   const [claimId, setClaimId] = useState("");
   const [error, setError] = useState("");
