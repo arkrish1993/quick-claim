@@ -1,7 +1,7 @@
 import { useState } from "react";
-import api from "../../src/api/api";
+import api from "../api/api";
 import isAlphaNumeric from "../utils/isAlphaNumeric";
-import { ErrorMessage, ResponseCode } from "../common/constants";
+import { ErrorMessage, KeyDownCode, ResponseCode } from "../common/constants";
 
 // convert to form
 function CheckClaimStatus({ setClaim, setBannerError }) {
@@ -22,7 +22,6 @@ function CheckClaimStatus({ setClaim, setBannerError }) {
           setIsLoading(false);
           setBannerError("");
           setError("");
-          // setClaimId(""); // Can be uncommented if claim ID needs to be reset
         }
       }
     } catch (err) {
@@ -34,13 +33,23 @@ function CheckClaimStatus({ setClaim, setBannerError }) {
       }
       setError("");
       setClaim(null);
-      setClaimId("");
+    }
+  };
+
+  const onChange = (e) => {
+    setClaimId(e.target.value);
+    setError("");
+  };
+
+  const onKeyDown = (e) => {
+    if (e.keyCode === KeyDownCode.ENTER || e.keyCode === KeyDownCode.SPACE) {
+      getClaimDetails();
     }
   };
 
   return (
     <>
-      <div className="card m-auto my-4 shadow" style={{ width: "800px" }}>
+      <div className="card m-4 shadow">
         <div className="card-body text-center">
           <div>
             <label htmlFor="claim-id" className="text-muted mt-3 me-2">
@@ -53,13 +62,15 @@ function CheckClaimStatus({ setClaim, setBannerError }) {
               placeholder="CLM1001"
               maxLength="7"
               value={claimId}
-              onChange={(e) => setClaimId(e.target.value)}
+              onKeyDown={onKeyDown}
+              onChange={onChange}
             />
           </div>
           <button
             disabled={!claimId || isLoading}
             onClick={getClaimDetails}
-            className={`btn ${!claimId || isLoading ? "" : "btn-outline-success "}w-25 mt-3`}
+            className={`btn ${!claimId || isLoading ? "" : "btn-outline-success "}w-25 text-nowrap mt-3`}
+            style={{ minWidth: "fit-content" }}
           >
             {isLoading ? (
               <div className="spinner-grow spinner-grow-sm" role="status"></div>
@@ -67,7 +78,7 @@ function CheckClaimStatus({ setClaim, setBannerError }) {
               "Check Status"
             )}
           </button>
-          {error.length > 0 && (
+          {error && (
             <div className="mt-3">
               <small className="text-danger">{error}</small>
             </div>

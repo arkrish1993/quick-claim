@@ -39,3 +39,14 @@ export const ErrorMessage = {
   NOT_FOUND: "Claim not found",
   ERROR: "Something went wrong",
 };
+
+/**
+ * Keyboard event key codes.
+ *
+ * @readonly
+ * @enum {number}
+ */
+export const KeyDownCode = {
+  ENTER: 13,
+  SPACE: 32,
+};

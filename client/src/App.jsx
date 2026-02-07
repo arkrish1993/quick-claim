@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "./components/Header";
-import CheckClaimStatus from "./components/CheckStatus";
-import DisplayClaim from "./components/ResultPanel";
+import CheckClaimStatus from "./components/CheckClaimStatus";
+import DisplayClaim from "./components/DisplayClaim";
 import ErrorBanner from "./components/ErrorBanner";
 
 function App() {

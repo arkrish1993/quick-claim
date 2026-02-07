@@ -1,10 +1,10 @@
 const ErrorBanner = ({ error }) => {
   return (
     <div
-      className="card text-center m-auto py-2 bg-danger text-white shadow"
-      style={{ width: "800px" }}
+      className="card text-center mx-4 py-2 shadow"
+      style={{ backgroundColor: "#FF7F7F", color: "darkred" }}
     >
-      {error}{" "}
+      {error}
     </div>
   );
 };
